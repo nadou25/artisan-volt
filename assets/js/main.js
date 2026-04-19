@@ -5,47 +5,79 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  /* ── Mobile Navigation ──────────────────── */
-  const menuToggle = document.getElementById('menu-toggle');
-  const nav = document.getElementById('nav');
-  const navOverlay = document.getElementById('nav-overlay');
+  /* ── Mobile Navigation (robust tactile) ──── */
+  var menuToggle = document.getElementById('menu-toggle');
+  var nav = document.getElementById('nav');
+  var navOverlay = document.getElementById('nav-overlay');
+
+  function openMenu() {
+    if (!nav) return;
+    nav.classList.add('nav--open');
+    if (menuToggle) {
+      menuToggle.classList.add('menu-toggle--active');
+      menuToggle.setAttribute('aria-expanded', 'true');
+    }
+    if (navOverlay) navOverlay.classList.add('nav-overlay--visible');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    if (!nav) return;
+    nav.classList.remove('nav--open');
+    if (menuToggle) {
+      menuToggle.classList.remove('menu-toggle--active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
+    if (navOverlay) navOverlay.classList.remove('nav-overlay--visible');
+    document.body.style.overflow = '';
+  }
+
+  function toggleMenu(e) {
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    if (!nav) return;
+    if (nav.classList.contains('nav--open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  }
 
   if (menuToggle && nav) {
-    menuToggle.addEventListener('click', function () {
-      const isOpen = nav.classList.contains('nav--open');
-      nav.classList.toggle('nav--open');
-      menuToggle.classList.toggle('menu-toggle--active');
-      menuToggle.setAttribute('aria-expanded', String(!isOpen));
-
-      if (navOverlay) {
-        navOverlay.classList.toggle('nav-overlay--visible');
-      }
-
-      document.body.style.overflow = isOpen ? '' : 'hidden';
+    // Click (desktop + tap iOS)
+    menuToggle.addEventListener('click', toggleMenu);
+    // Pointerup (plus reactif sur certains Android)
+    menuToggle.addEventListener('pointerup', function (e) {
+      if (e.pointerType === 'touch') toggleMenu(e);
     });
 
+    // Overlay ferme le menu
     if (navOverlay) {
-      navOverlay.addEventListener('click', function () {
-        nav.classList.remove('nav--open');
-        menuToggle.classList.remove('menu-toggle--active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        navOverlay.classList.remove('nav-overlay--visible');
-        document.body.style.overflow = '';
-      });
+      navOverlay.addEventListener('click', closeMenu);
+      navOverlay.addEventListener('touchend', function (e) { e.preventDefault(); closeMenu(); }, { passive: false });
     }
 
-    // Close menu on nav link click
-    var navLinks = nav.querySelectorAll('.nav__link');
+    // Fermer au clic sur un lien (sauf dropdown toggle)
+    var navLinks = nav.querySelectorAll('a.nav__link, .nav__dropdown-link');
     navLinks.forEach(function (link) {
-      link.addEventListener('click', function () {
-        nav.classList.remove('nav--open');
-        menuToggle.classList.remove('menu-toggle--active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        if (navOverlay) {
-          navOverlay.classList.remove('nav-overlay--visible');
-        }
-        document.body.style.overflow = '';
+      link.addEventListener('click', function () { closeMenu(); });
+    });
+
+    // Dropdown "Plus" dans le menu mobile
+    var dropdownToggles = nav.querySelectorAll('.nav__dropdown-toggle');
+    dropdownToggles.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var parent = btn.closest('.nav__dropdown');
+        if (parent) parent.classList.toggle('nav__dropdown--open');
+        var expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
       });
+    });
+
+    // Echap ferme
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenu();
     });
   }
 
