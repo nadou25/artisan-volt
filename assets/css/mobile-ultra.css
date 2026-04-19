@@ -1,197 +1,188 @@
 /* ============================================
    MOBILE ULTRA — Artisan Volt
-   Optimisation maximale telephone (charge en dernier)
+   Version minimaliste (charge en dernier)
+   Uniquement < 767px
    ============================================ */
 
-/* ── Variables mobile ────────────────────── */
 :root {
   --mobile-bottom-bar-h: 72px;
   --touch-min: 48px;
 }
 
-/* ── Performance : desactiver canvas/effets lourds sur mobile ── */
+/* ============================================
+   MOBILE SEULEMENT — tout est dans ce media query
+   ============================================ */
 @media (max-width: 767px) {
+
+  /* ── PERFORMANCE : desactiver effets lourds ───── */
   .hero__fx,
-  canvas[data-hero-fx] {
+  canvas[data-hero-fx],
+  .hero__bg-pattern,
+  .bulb-stage__grid,
+  .bulb-stage__mesh,
+  .bulb-stage__corner,
+  .bulb-stage__label,
+  .bulb__rays,
+  .bulb__glow,
+  #volt-svg-defs,
+  [data-spark]::before,
+  [data-spark]::after {
     display: none !important;
   }
 
-  /* Reduire les animations lourdes */
-  .hero__bg-pattern {
-    opacity: 0.4;
-  }
-
-  /* Optimiser les animations GPU */
-  .card,
-  .btn,
-  .trust-bar__item {
-    will-change: auto;
-    transform: none;
-  }
-
-  .card:hover {
-    transform: none;
-    box-shadow: var(--shadow-md);
-  }
-}
-
-/* ── HERO : layout mobile optimise ─────────── */
-@media (max-width: 767px) {
-  .hero {
-    padding: 1.5rem 0 5rem !important;
-    min-height: auto !important;
-  }
-
-  .hero__inner {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 1.5rem !important;
-    align-items: stretch !important;
-  }
-
-  /* Image en premier sur mobile (visual-first) */
-  .hero__image {
-    order: -1;
-    max-height: 220px !important;
-    border-radius: 16px;
-    overflow: hidden;
-  }
-
-  .hero__image img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    object-position: top center;
-    border-radius: 16px;
-  }
-
-  .hero__content {
-    text-align: center;
-  }
-
-  .hud-tag {
-    font-size: 0.72rem !important;
-    padding: 0.4rem 0.9rem !important;
-    display: inline-flex !important;
-    margin: 0 auto 1rem !important;
-  }
-
-  .hero__title {
-    font-size: clamp(1.65rem, 6.5vw, 2.1rem) !important;
-    line-height: 1.12 !important;
-    margin-bottom: 0.75rem !important;
-  }
-
-  .hero__description {
-    font-size: 0.95rem !important;
+  /* ── TYPOGRAPHIE : hierarchie claire ──────────── */
+  body {
+    font-size: 15px !important;
     line-height: 1.55 !important;
-    margin-bottom: 1.25rem !important;
-    color: rgba(250, 250, 249, 0.82) !important;
   }
 
-  .hero__buttons {
-    display: flex !important;
-    flex-direction: row !important;
-    gap: 0.6rem !important;
-    justify-content: center !important;
-    flex-wrap: nowrap !important;
+  h1, .hero__title {
+    font-size: 1.75rem !important;
+    line-height: 1.15 !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.02em !important;
   }
 
-  .hero__buttons .btn {
-    flex: 1 !important;
-    min-width: 0 !important;
-    padding: 0.9rem 0.75rem !important;
-    font-size: 0.88rem !important;
-    max-width: 48% !important;
-  }
-
-  .hero__reassurance {
-    font-size: 0.8rem !important;
-    text-align: center !important;
-    justify-content: center !important;
-    opacity: 0.85;
-    margin-top: 0.75rem !important;
-  }
-
-  .availability-badge {
-    justify-content: center !important;
-  }
-}
-
-/* ── BOTTOM BAR : upgrade visuel ──────────── */
-@media (max-width: 767px) {
-  .mobile-bottom-bar {
-    height: var(--mobile-bottom-bar-h) !important;
-    padding: 0.6rem 0.75rem env(safe-area-inset-bottom, 0.6rem) !important;
-    gap: 0.5rem !important;
-    align-items: stretch !important;
-  }
-
-  .mobile-bottom-bar__btn {
-    flex: 1 !important;
-    min-height: var(--touch-min) !important;
-    padding: 0.6rem 0.4rem !important;
-    font-size: 0.8rem !important;
+  h2, .section__title, .page-hero__title {
+    font-size: 1.4rem !important;
+    line-height: 1.2 !important;
     font-weight: 700 !important;
-    border-radius: 12px !important;
-    gap: 0.3rem !important;
-    flex-direction: column !important;
-    letter-spacing: 0.01em !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  h3, .card-service__title {
+    font-size: 1.05rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+  }
+
+  p {
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+  }
+
+  .section__subtitle {
+    font-size: 0.7rem !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  .section__description {
+    font-size: 0.9rem !important;
+    padding: 0 !important;
+  }
+
+  /* ── HEADER : compact et lisible ──────────────── */
+  .header__inner {
+    padding: 0.5rem 1rem !important;
+    min-height: 56px !important;
+    gap: 0.5rem !important;
+  }
+
+  .header__logo-img {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .header__logo-brand {
+    font-size: 0.82rem !important;
+    letter-spacing: 0.03em !important;
     line-height: 1.1 !important;
   }
 
-  .mobile-bottom-bar__btn svg {
-    width: 22px !important;
-    height: 22px !important;
+  .header__logo-slogan {
+    font-size: 0.58rem !important;
+    line-height: 1.2 !important;
   }
 
-  /* Appel : accent rouge urgence */
-  .mobile-bottom-bar__btn--call {
-    background: linear-gradient(135deg, #0B1E3F, #1E4175) !important;
-    box-shadow: 0 4px 12px rgba(11, 30, 63, 0.35) !important;
-  }
-
-  /* WhatsApp : vert vif */
-  .mobile-bottom-bar__btn--whatsapp {
-    background: linear-gradient(135deg, #25D366, #128C7E) !important;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3) !important;
-  }
-
-  /* Devis : or premium */
-  .mobile-bottom-bar__btn--quote {
-    background: linear-gradient(135deg, #F59E0B, #C2410C) !important;
-    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35) !important;
-  }
-
-  .mobile-bottom-bar__btn:active {
-    transform: scale(0.93) !important;
-    opacity: 0.9;
+  .header__cta {
+    display: none !important;
   }
 
   body {
-    padding-bottom: calc(var(--mobile-bottom-bar-h) + env(safe-area-inset-bottom, 0px)) !important;
+    padding-top: 56px !important;
   }
-}
 
-/* ── NAVIGATION MOBILE : drawer ameliore ─── */
-@media (max-width: 767px) {
+  /* ── MENU TOGGLE : plus visible ──────────────── */
+  .menu-toggle {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    padding: 10px !important;
+    border-radius: 10px !important;
+    background: rgba(11, 30, 63, 0.06) !important;
+    border: none !important;
+    cursor: pointer !important;
+    gap: 4px !important;
+    z-index: 1102 !important;
+    position: relative !important;
+  }
+
+  .menu-toggle__bar {
+    width: 20px !important;
+    height: 2.5px !important;
+    background: var(--color-primary) !important;
+    border-radius: 2px !important;
+    transition: transform 0.25s ease, opacity 0.2s ease !important;
+  }
+
+  .menu-toggle--active .menu-toggle__bar:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 5px) !important;
+  }
+  .menu-toggle--active .menu-toggle__bar:nth-child(2) {
+    opacity: 0 !important;
+  }
+  .menu-toggle--active .menu-toggle__bar:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -5px) !important;
+  }
+
+  /* ── NAV DRAWER : simple et propre ─────────── */
   .nav {
+    position: fixed !important;
+    top: 0 !important;
+    right: -100% !important;
+    width: 82% !important;
+    max-width: 320px !important;
+    height: 100vh !important;
     background: #FFFFFF !important;
-    box-shadow: 4px 0 32px rgba(11, 30, 63, 0.18) !important;
+    z-index: 1100 !important;
+    padding: 5rem 1.25rem 6rem !important;
+    box-shadow: -8px 0 32px rgba(11, 30, 63, 0.15) !important;
+    transition: right 0.3s ease !important;
+    overflow-y: auto !important;
+  }
+
+  .nav.nav--open {
+    right: 0 !important;
   }
 
   .nav__list {
-    padding: 0 1rem 1.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.25rem !important;
+    padding: 0 !important;
+    list-style: none !important;
   }
 
   .nav__link {
-    font-size: 1rem !important;
-    padding: 1rem 0.75rem !important;
-    border-radius: 10px !important;
-    color: var(--color-text) !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: space-between !important;
+    width: 100% !important;
+    padding: 0.9rem 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    color: var(--color-text) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+  }
+
+  .nav__link::after {
+    display: none !important;
   }
 
   .nav__link--active {
@@ -200,90 +191,139 @@
   }
 
   .nav__dropdown-toggle {
-    width: 100% !important;
     background: none !important;
     border: none !important;
-    text-align: left !important;
     cursor: pointer !important;
+    justify-content: space-between !important;
   }
 
   .nav__dropdown-menu {
-    background: var(--color-neutral-50) !important;
-    border-radius: 10px !important;
-    padding: 0.5rem !important;
-    margin-top: 0.25rem !important;
-    border-left: 3px solid var(--color-primary-100) !important;
+    padding: 0.25rem 0 0.25rem 0.75rem !important;
+    margin: 0 !important;
+    border-left: 2px solid rgba(11, 30, 63, 0.1) !important;
+    list-style: none !important;
   }
 
   .nav__dropdown-link {
     display: block !important;
     padding: 0.7rem 0.75rem !important;
-    border-radius: 8px !important;
-    font-size: 0.92rem !important;
+    font-size: 0.88rem !important;
     color: var(--color-text-light) !important;
+    border-radius: 6px !important;
+    text-decoration: none !important;
   }
 
-  .nav__dropdown-link:hover {
-    background: rgba(11, 30, 63, 0.06) !important;
-    color: var(--color-primary) !important;
-  }
-
-  /* CTA reservation en bas du menu */
-  .nav__link.nav__cta {
+  .nav__cta {
+    margin-top: 0.75rem !important;
     background: var(--color-primary) !important;
     color: #FFFFFF !important;
-    margin-top: 0.5rem !important;
     justify-content: center !important;
-    padding: 0.9rem 1rem !important;
-  }
-}
-
-/* ── HEADER MOBILE : compact + numero visible ─── */
-@media (max-width: 767px) {
-  .header__inner {
-    padding: 0.65rem 1rem !important;
-    min-height: 58px !important;
+    padding: 1rem !important;
   }
 
-  .header__logo {
-    gap: 0.5rem !important;
+  .nav-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    z-index: 1099 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: opacity 0.3s ease, visibility 0.3s ease !important;
   }
 
-  .header__logo-img {
-    width: 34px !important;
-    height: 34px !important;
+  .nav-overlay--visible {
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
-  .header__logo-brand {
-    font-size: 0.88rem !important;
-    letter-spacing: 0.04em !important;
+  /* ── HERO : epure maximum ───────────────────── */
+  .hero {
+    padding: 1.5rem 0 2.5rem !important;
+    min-height: auto !important;
   }
 
-  .header__logo-slogan {
-    font-size: 0.6rem !important;
-  }
-
-  .menu-toggle {
-    width: 40px !important;
-    height: 40px !important;
-    padding: 6px !important;
-    border-radius: 8px !important;
-    background: rgba(11, 30, 63, 0.06) !important;
+  .hero__inner {
     display: flex !important;
-    align-items: center !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+    text-align: center !important;
+  }
+
+  .hero__image {
+    order: -1 !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .hero__image img {
+    width: 100% !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: 14px !important;
+  }
+
+  .hud-tag {
+    display: none !important;
+  }
+
+  .hero__title {
+    margin-bottom: 0.6rem !important;
+  }
+
+  .hero__title span {
+    display: inline !important;
+  }
+
+  .hero__description {
+    font-size: 0.92rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 1rem !important;
+    color: rgba(250, 250, 249, 0.82) !important;
+    padding: 0 0.5rem !important;
+  }
+
+  .hero__buttons {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.6rem !important;
     justify-content: center !important;
   }
-}
 
-/* ── TRUST BAR MOBILE ───────────────────── */
-@media (max-width: 479px) {
+  .hero__buttons .btn {
+    flex: 1 !important;
+    padding: 0.85rem 0.75rem !important;
+    font-size: 0.85rem !important;
+    min-height: var(--touch-min) !important;
+  }
+
+  .hero__reassurance {
+    font-size: 0.75rem !important;
+    opacity: 0.75 !important;
+    justify-content: center !important;
+    margin-top: 0.75rem !important;
+  }
+
+  .availability-badge {
+    font-size: 0.75rem !important;
+    padding: 0.35rem 0.75rem !important;
+    justify-content: center !important;
+  }
+
+  /* ── TRUST BAR : minimal 2 col ──────────────── */
+  .trust-bar {
+    padding: 2rem 0 !important;
+  }
+
   .trust-bar__inner {
+    display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 0 !important;
   }
 
   .trust-bar__item {
-    padding: 1.25rem 0.75rem !important;
+    padding: 1.25rem 0.5rem !important;
+    text-align: center !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
   }
 
@@ -291,74 +331,100 @@
     border-right: 1px solid rgba(255, 255, 255, 0.06) !important;
   }
 
+  .trust-bar__item:nth-last-child(-n+2) {
+    border-bottom: none !important;
+  }
+
+  /* Cacher l'item rating (5e) sur mobile — redondant */
+  .trust-bar__item:nth-child(5) {
+    display: none !important;
+  }
+
   .trust-bar__number {
-    font-size: 2.25rem !important;
+    font-size: 1.85rem !important;
+    margin-bottom: 0.4rem !important;
   }
 
   .trust-bar__label {
-    font-size: 0.68rem !important;
-    letter-spacing: 0.1em !important;
+    font-size: 0.62rem !important;
+    letter-spacing: 0.08em !important;
   }
 
   .trust-bar__icon {
-    width: 28px !important;
-    height: 28px !important;
-    margin-bottom: 0.5rem !important;
+    width: 24px !important;
+    height: 24px !important;
+    margin-bottom: 0.4rem !important;
   }
-}
 
-/* ── SECTIONS MOBILE ────────────────────── */
-@media (max-width: 767px) {
+  .trust-bar__icon svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .certifications,
+  .coverage-zone {
+    display: none !important;
+  }
+
+  /* ── SECTIONS : espacement propre ───────────── */
   .section {
     padding: 2.5rem 0 !important;
   }
 
   .section__header {
     margin-bottom: 1.5rem !important;
+    text-align: center !important;
   }
 
-  .section__title {
-    font-size: clamp(1.4rem, 5vw, 1.75rem) !important;
+  /* ── GRIDS : single column clean ────────────── */
+  .grid,
+  .grid--2,
+  .grid--3,
+  .grid--4 {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.85rem !important;
   }
 
-  .section__subtitle {
-    font-size: 0.72rem !important;
+  /* ── CARDS services : minimalistes ──────────── */
+  .card {
+    padding: 1.25rem !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(11, 30, 63, 0.06) !important;
+    border: 1px solid rgba(11, 30, 63, 0.06) !important;
   }
 
-  .section__description {
-    font-size: 0.92rem !important;
-    padding: 0 !important;
-  }
-}
-
-/* ── CARDS MOBILE ───────────────────────── */
-@media (max-width: 767px) {
-  .card-service {
-    padding: 1.5rem !important;
+  .card:hover {
+    transform: none !important;
   }
 
   .card-service__icon {
-    width: 52px !important;
-    height: 52px !important;
-    margin-bottom: 1rem !important;
+    width: 44px !important;
+    height: 44px !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .card-service__icon svg {
+    width: 22px !important;
+    height: 22px !important;
   }
 
   .card-service__title {
-    font-size: 1.05rem !important;
-    margin-bottom: 0.5rem !important;
+    margin-bottom: 0.4rem !important;
   }
 
   .card-service__description {
-    font-size: 0.9rem !important;
-    line-height: 1.55 !important;
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 0.75rem !important;
   }
 
   .card-service__link {
-    margin-top: 1rem !important;
-    font-size: 0.88rem !important;
-    min-height: var(--touch-min) !important;
+    font-size: 0.85rem !important;
+    min-height: 40px !important;
     display: inline-flex !important;
     align-items: center !important;
+    gap: 0.4rem !important;
   }
 
   .card-testimonial {
@@ -369,250 +435,281 @@
     font-size: 0.9rem !important;
     line-height: 1.55 !important;
   }
-}
 
-/* ── CTA SECTION MOBILE ─────────────────── */
-@media (max-width: 767px) {
+  /* ── SPLIT : stack clean ────────────────────── */
+  .split {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+
+  .split > div:first-child img,
+  .split .media-gradient-block img {
+    width: 100% !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    border-radius: 12px !important;
+  }
+
+  .split ul {
+    margin-top: 1rem !important;
+    gap: 0.75rem !important;
+  }
+
+  .split ul li {
+    font-size: 0.9rem !important;
+  }
+
+  /* ── CTA SECTION : 1 CTA clair ──────────────── */
   .cta-section {
-    padding: 3rem 0 !important;
+    padding: 2.5rem 0 !important;
   }
 
   .cta-section__title {
-    font-size: 1.75rem !important;
-    line-height: 1.15 !important;
+    font-size: 1.5rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.75rem !important;
   }
 
   .cta-section__description {
-    font-size: 0.92rem !important;
-    margin-bottom: 1.5rem !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 1.25rem !important;
   }
 
   .cta-section__buttons {
+    display: flex !important;
     flex-direction: column !important;
-    gap: 0.75rem !important;
-    align-items: stretch !important;
+    gap: 0.6rem !important;
   }
 
   .cta-section__buttons .btn {
     width: 100% !important;
-    padding: 1rem !important;
+    padding: 0.95rem !important;
+    font-size: 0.92rem !important;
+    min-height: 50px !important;
+    justify-content: center !important;
+  }
+
+  /* ── BOUTONS globaux : touch ─────────────────── */
+  .btn {
+    min-height: var(--touch-min) !important;
+    padding: 0.85rem 1.4rem !important;
+    font-size: 0.88rem !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  .btn--lg {
+    padding: 0.95rem 1.4rem !important;
     font-size: 0.95rem !important;
-    min-height: 52px !important;
-    justify-content: center !important;
-  }
-}
-
-/* ── SPLIT SECTION MOBILE ───────────────── */
-@media (max-width: 767px) {
-  .split {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
   }
 
-  .split > div:first-child img {
-    max-height: 240px !important;
-    width: 100% !important;
-    object-fit: cover !important;
+  .btn--sm {
+    min-height: 36px !important;
+    padding: 0.4rem 0.85rem !important;
+    font-size: 0.8rem !important;
   }
 
-  .split h2 {
-    font-size: 1.5rem !important;
-    line-height: 1.2 !important;
-  }
-}
-
-/* ── FOOTER MOBILE ──────────────────────── */
-@media (max-width: 767px) {
-  .footer__inner {
-    grid-template-columns: 1fr !important;
-    gap: 2rem !important;
-    padding: 2rem 0 1rem !important;
-  }
-
-  .footer__brand p {
-    font-size: 0.88rem !important;
-    line-height: 1.55 !important;
-  }
-
-  .footer__heading {
-    font-size: 0.85rem !important;
-    letter-spacing: 0.1em !important;
-    margin-bottom: 0.75rem !important;
-  }
-
-  .footer__links li {
-    margin-bottom: 0.5rem !important;
-  }
-
-  .footer__links a {
-    font-size: 0.88rem !important;
-    padding: 0.2rem 0 !important;
-    display: inline-block !important;
-  }
-
-  .footer__contact-item {
-    font-size: 0.88rem !important;
-    margin-bottom: 0.6rem !important;
-    gap: 0.5rem !important;
-  }
-
-  .footer__bottom {
-    padding: 1rem 0 !important;
-    flex-direction: column !important;
-    gap: 0.5rem !important;
-    text-align: center !important;
-  }
-
-  .footer__copyright {
-    font-size: 0.78rem !important;
-  }
-
-  .footer__legal {
-    display: flex !important;
-    gap: 1rem !important;
-    justify-content: center !important;
-  }
-
-  .footer__legal a {
-    font-size: 0.78rem !important;
-  }
-
-  .footer__socials {
-    margin-top: 0.75rem !important;
-  }
-
-  .footer {
-    padding-bottom: calc(var(--mobile-bottom-bar-h) + 1rem) !important;
-  }
-}
-
-/* ── FORMULAIRES MOBILE ─────────────────── */
-@media (max-width: 767px) {
+  /* ── FORMULAIRES : 16px = no zoom iOS ──────── */
   input[type="text"],
   input[type="email"],
   input[type="tel"],
   input[type="date"],
+  input[type="number"],
   textarea,
   select {
-    font-size: 16px !important; /* Evite zoom iOS */
+    font-size: 16px !important;
     min-height: var(--touch-min) !important;
     padding: 0.75rem 1rem !important;
     border-radius: 10px !important;
+    width: 100% !important;
   }
 
   textarea {
     min-height: 110px !important;
   }
 
-  .form__group {
-    margin-bottom: 1rem !important;
-  }
-
-  .form__label {
+  label, .form__label {
     font-size: 0.88rem !important;
     margin-bottom: 0.4rem !important;
     display: block !important;
   }
-}
 
-/* ── BOUTONS MOBILE : touch-friendly ───── */
-@media (max-width: 767px) {
-  .btn {
-    min-height: var(--touch-min) !important;
-    padding: 0.85rem 1.4rem !important;
-    font-size: 0.92rem !important;
-    -webkit-tap-highlight-color: transparent !important;
-  }
-
-  .btn--lg {
-    padding: 0.95rem 1.6rem !important;
-    font-size: 1rem !important;
-  }
-
-  .btn--sm {
-    min-height: 36px !important;
-    padding: 0.45rem 1rem !important;
-    font-size: 0.82rem !important;
-  }
-}
-
-/* ── GRILLE SERVICES 2 COL sur petites tablettes ── */
-@media (min-width: 480px) and (max-width: 767px) {
-  .grid--3 {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-}
-
-/* ── TEXTES TRONQUES MOBILE ──────────────── */
-@media (max-width: 767px) {
-  h2 {
-    font-size: clamp(1.35rem, 5.5vw, 1.75rem) !important;
-    line-height: 1.2 !important;
-  }
-
-  h3 {
-    font-size: clamp(1.1rem, 4vw, 1.35rem) !important;
-  }
-
-  p {
-    font-size: 0.93rem !important;
-    line-height: 1.65 !important;
-  }
-}
-
-/* ── SCROLL SNAP sur grilles de cards ────── */
-@media (max-width: 479px) {
-  .grid--3 {
+  /* ── BOTTOM BAR : premium + safe area ───────── */
+  .mobile-bottom-bar {
     display: flex !important;
-    flex-direction: row !important;
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    gap: 1rem !important;
-    padding-bottom: 0.75rem !important;
-    -webkit-overflow-scrolling: touch !important;
-    scrollbar-width: none !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 950 !important;
+    background: #FFFFFF !important;
+    border-top: 1px solid rgba(11, 30, 63, 0.08) !important;
+    box-shadow: 0 -4px 20px rgba(11, 30, 63, 0.08) !important;
+    padding: 0.55rem 0.6rem !important;
+    padding-bottom: max(0.55rem, env(safe-area-inset-bottom)) !important;
+    gap: 0.5rem !important;
+    height: auto !important;
+    min-height: var(--mobile-bottom-bar-h) !important;
   }
 
-  .grid--3::-webkit-scrollbar {
+  .mobile-bottom-bar__btn {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.2rem !important;
+    padding: 0.5rem 0.3rem !important;
+    min-height: 54px !important;
+    font-family: var(--font-heading) !important;
+    font-weight: 700 !important;
+    font-size: 0.74rem !important;
+    border-radius: 11px !important;
+    text-decoration: none !important;
+    letter-spacing: 0.02em !important;
+    line-height: 1 !important;
+    transition: transform 0.15s ease !important;
+  }
+
+  .mobile-bottom-bar__btn svg {
+    width: 20px !important;
+    height: 20px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .mobile-bottom-bar__btn:active {
+    transform: scale(0.93) !important;
+  }
+
+  .mobile-bottom-bar__btn--call {
+    background: linear-gradient(135deg, #0B1E3F, #1E4175) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 2px 8px rgba(11, 30, 63, 0.25) !important;
+  }
+
+  .mobile-bottom-bar__btn--whatsapp {
+    background: linear-gradient(135deg, #25D366, #128C7E) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.25) !important;
+  }
+
+  .mobile-bottom-bar__btn--quote {
+    background: linear-gradient(135deg, #F59E0B, #C2410C) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25) !important;
+  }
+
+  body {
+    padding-bottom: calc(var(--mobile-bottom-bar-h) + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  .whatsapp-btn {
     display: none !important;
   }
 
-  .grid--3 > * {
-    flex: 0 0 82vw !important;
-    scroll-snap-align: start !important;
-    max-width: 320px !important;
-  }
-}
-
-/* ── LIENS TELEPHONE CLIQUABLES ─────────── */
-@media (max-width: 767px) {
-  a[href^="tel"] {
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
+  /* ── FOOTER : stack minimal ─────────────────── */
+  .footer {
+    padding-bottom: calc(var(--mobile-bottom-bar-h) + 1rem) !important;
   }
 
-  .header__phone {
+  .footer__inner {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.75rem !important;
+    padding: 2rem 0 1rem !important;
+  }
+
+  .footer__brand p {
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .footer__heading {
+    font-size: 0.8rem !important;
+    letter-spacing: 0.1em !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  .footer__links li {
+    margin-bottom: 0.35rem !important;
+  }
+
+  .footer__links a {
+    font-size: 0.85rem !important;
+    padding: 0.25rem 0 !important;
+  }
+
+  .footer__contact-item {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.55rem !important;
+    gap: 0.5rem !important;
+  }
+
+  .footer__bottom {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    text-align: center !important;
+    padding: 1rem 0 !important;
+  }
+
+  .footer__copyright, .footer__legal a {
+    font-size: 0.75rem !important;
+  }
+
+  .footer__socials {
+    margin-top: 0.5rem !important;
+  }
+
+  /* ── MASQUER ELEMENTS NON ESSENTIELS MOBILE ── */
+  .hero__bulb-wrap,
+  .bulb-stage,
+  .section-about__image-decor,
+  .decor-line,
+  .mesh-bg::before,
+  .mesh-bg::after {
     display: none !important;
   }
-}
 
-/* ── LOGO IMAGE MOBILE ──────────────────── */
-@media (max-width: 767px) {
-  .header__logo-img {
-    width: 32px !important;
-    height: 32px !important;
+  .mesh-bg {
+    background: var(--color-bg-alt) !important;
+  }
+
+  /* ── PAGE HERO (sous-pages) : compact ───────── */
+  .page-hero {
+    padding: 2rem 0 2rem !important;
+    min-height: auto !important;
+  }
+
+  .page-hero__breadcrumb {
+    font-size: 0.78rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .page-hero__subtitle {
+    font-size: 0.88rem !important;
+    margin-top: 0.5rem !important;
+  }
+
+  /* ── SCROLL : fluide ─────────────────────────── */
+  html {
+    scroll-padding-top: 70px !important;
+    -webkit-text-size-adjust: 100% !important;
+  }
+
+  /* ── Links tel : no highlight ────────────────── */
+  a[href^="tel"],
+  a[href*="wa.me"] {
+    -webkit-tap-highlight-color: transparent !important;
+    touch-action: manipulation !important;
+  }
+
+  /* ── Container padding propre ───────────────── */
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
 }
 
-/* ── SAFE AREA (iPhone X+) ──────────────── */
-@supports (padding: env(safe-area-inset-bottom)) {
-  @media (max-width: 767px) {
-    .mobile-bottom-bar {
-      padding-bottom: max(0.6rem, env(safe-area-inset-bottom)) !important;
-    }
-
-    body {
-      padding-bottom: calc(var(--mobile-bottom-bar-h) + env(safe-area-inset-bottom)) !important;
-    }
-  }
-}
+/* ============================================
+   DESKTOP : pas de changements hors mobile
+   ============================================ */
