@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Artisan Volt">
+  <defs>
+    <linearGradient id="mk-bolt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0066FF"/>
+      <stop offset="1" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="mk-ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0066FF"/>
+      <stop offset="1" stop-color="#3385FF"/>
+    </linearGradient>
+  </defs>
+  <circle cx="24" cy="24" r="21" fill="none" stroke="url(#mk-ring)" stroke-width="2.2"/>
+  <path d="M27 10 L14 26 h7 l-2 12 L33 22 h-7 l1-12z" fill="url(#mk-bolt)"/>
+  <circle cx="24" cy="24" r="1.6" fill="#FFFFFF"/>
+</svg>

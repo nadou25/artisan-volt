@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Artisan Volt — Electricien a Versailles">
+  <defs>
+    <linearGradient id="og-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0F172A"/>
+      <stop offset="0.5" stop-color="#1E293B"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="og-bolt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3385FF"/>
+      <stop offset="1" stop-color="#D97706"/>
+    </linearGradient>
+    <radialGradient id="og-mesh" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="rgba(0,102,255,0.35)"/>
+      <stop offset="1" stop-color="rgba(0,102,255,0)"/>
+    </radialGradient>
+    <filter id="og-glow">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#og-bg)"/>
+  <circle cx="900" cy="200" r="320" fill="url(#og-mesh)"/>
+  <circle cx="250" cy="480" r="260" fill="url(#og-mesh)" opacity="0.6"/>
+
+  <!-- Grille tech decor -->
+  <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+    <line x1="0" y1="157" x2="1200" y2="157"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="472" x2="1200" y2="472"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+  </g>
+
+  <!-- Logo mark -->
+  <g transform="translate(100, 220)">
+    <circle cx="80" cy="80" r="75" fill="none" stroke="#3385FF" stroke-width="5"/>
+    <path d="M92 30 L48 90 h25 l-7 50 L118 78 h-25 l3 -48z" fill="url(#og-bolt)" filter="url(#og-glow)"/>
+    <path d="M92 30 L48 90 h25 l-7 50 L118 78 h-25 l3 -48z" fill="url(#og-bolt)"/>
+  </g>
+
+  <!-- Texte -->
+  <g font-family="Montserrat, system-ui, sans-serif" fill="#F8FAFC">
+    <text x="310" y="260" font-size="72" font-weight="800" letter-spacing="-0.02em">ARTISAN VOLT</text>
+    <text x="310" y="330" font-size="36" font-weight="600" fill="#3385FF">Electricien a Versailles</text>
+    <text x="310" y="400" font-size="26" font-weight="500" fill="#CBD5E1">Le savoir-faire electrique en toute confiance</text>
+  </g>
+
+  <!-- Trust badges bottom -->
+  <g transform="translate(310, 460)" font-family="Montserrat, system-ui, sans-serif" font-weight="700">
+    <rect x="0" y="0" width="200" height="50" rx="25" fill="rgba(0,102,255,0.2)" stroke="#3385FF" stroke-width="1.5"/>
+    <text x="100" y="32" font-size="18" text-anchor="middle" fill="#F8FAFC">Urgence 24h/7j</text>
+
+    <rect x="220" y="0" width="180" height="50" rx="25" fill="rgba(217,119,6,0.2)" stroke="#D97706" stroke-width="1.5"/>
+    <text x="310" y="32" font-size="18" text-anchor="middle" fill="#F8FAFC">4.9/5 Google</text>
+
+    <rect x="420" y="0" width="220" height="50" rx="25" fill="rgba(16,185,129,0.2)" stroke="#10B981" stroke-width="1.5"/>
+    <text x="530" y="32" font-size="18" text-anchor="middle" fill="#F8FAFC">Qualifelec RGE</text>
+  </g>
+
+  <!-- Bolt accent top-right -->
+  <path d="M1100 60 L1060 110 h20 l-10 50 L1130 90 h-20 l5 -30z" fill="#D97706" opacity="0.3"/>
+</svg>

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /.workflow/
+Disallow: /docs/
+Disallow: /assets/fonts/
+
+Sitemap: https://artisanvolt.fr/sitemap.xml

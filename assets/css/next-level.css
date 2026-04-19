@@ -1,0 +1,424 @@
+/* ============================================
+   NEXT LEVEL — Upgrades Ultra Pro
+   Ajouts : Hero electric FX, Trust badges, Hero glow,
+   Rating stars, Card premium, Pulse phone, Typo polish,
+   Form feedback, Certifications, Nav booking highlight
+   ============================================ */
+
+/* ── 1. Electric FX minimaliste (toutes pages) ── */
+.hero,
+.page-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+canvas.hero__fx {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.9;
+  display: block;
+}
+
+.hero > .container,
+.hero__inner,
+.hero__content,
+.hero__image,
+.page-hero > .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero [data-spark],
+.page-hero [data-spark] {
+  position: relative;
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .hero__fx { display: none; }
+}
+
+/* ── 2. Badge disponibilite temps reel ──────── */
+.availability-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(16, 185, 129, 0.12);
+  color: #047857;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.02em;
+}
+
+.availability-badge[data-status="closed"] {
+  background: rgba(217, 119, 6, 0.12);
+  color: #92400E;
+  border-color: rgba(217, 119, 6, 0.35);
+}
+
+.availability-badge__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 0 currentColor;
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 currentColor; opacity: 1; }
+  50% { box-shadow: 0 0 0 6px transparent; opacity: 0.75; }
+}
+
+/* ── 3. Trust signals / Note Google ─────────── */
+.trust-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 8px 14px;
+  background: #FFFFFF;
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+}
+
+.trust-rating__stars {
+  display: inline-flex;
+  gap: 2px;
+  color: #FFB800;
+}
+
+.trust-rating__stars svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.trust-rating__value {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+}
+
+.trust-rating__meta {
+  color: var(--color-text-light);
+  font-size: var(--font-size-xs);
+}
+
+/* ── 4. Hero reassurance pill ───────────────── */
+.hero__reassurance {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  padding: 10px 18px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #A7F3D0;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.hero__reassurance svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.5;
+}
+
+/* ── 5. Hero image aura glow premium ────────── */
+.hero__image,
+.hero__visual {
+  position: relative;
+}
+
+.hero__image::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: var(--gradient-brand);
+  border-radius: calc(var(--radius-xl) + 4px);
+  z-index: -1;
+  filter: blur(32px);
+  opacity: 0.4;
+  animation: aura-breath 6s ease-in-out infinite;
+}
+
+@keyframes aura-breath {
+  0%, 100% { opacity: 0.35; transform: scale(0.98); }
+  50% { opacity: 0.55; transform: scale(1.02); }
+}
+
+/* ── 6. Cards premium avec gradient subtil ──── */
+.card,
+.service-card,
+.testimonial-card,
+.pricing-card {
+  background: linear-gradient(180deg, #FFFFFF 0%, var(--color-neutral-50) 100%);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.card:hover,
+.service-card:hover,
+.pricing-card:hover {
+  border-color: rgba(var(--color-primary-rgb), 0.18);
+  box-shadow: var(--shadow-xl), 0 0 0 1px rgba(var(--color-primary-rgb), 0.08);
+}
+
+/* ── 7. Pulse telephone header ──────────────── */
+.header__phone svg,
+a[href^="tel:"] svg {
+  animation: phone-sway 5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes phone-sway {
+  0%, 88%, 100% { transform: rotate(0); }
+  90%, 94% { transform: rotate(14deg); }
+  92% { transform: rotate(-14deg); }
+}
+
+/* ── 8. Certifications row ──────────────────── */
+.certifications {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-lg) 0;
+}
+
+.certif-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: #FFFFFF;
+  border: 1.5px solid var(--color-neutral-200);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+}
+
+.certif-badge:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.certif-badge svg {
+  width: 20px;
+  height: 20px;
+  color: var(--color-primary);
+}
+
+/* ── 9. Nav booking highlight ───────────────── */
+.nav__list a.nav__cta,
+.nav__link--primary {
+  padding: 8px 16px;
+  background: var(--gradient-primary);
+  color: #FFFFFF !important;
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-bold);
+  box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.3);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.nav__list a.nav__cta:hover,
+.nav__link--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(var(--color-primary-rgb), 0.45);
+  color: #FFFFFF !important;
+}
+
+/* ── 10. Form feedback temps reel ───────────── */
+.form-field {
+  position: relative;
+  margin-bottom: var(--space-lg);
+}
+
+.form-error-msg {
+  display: none;
+  margin-top: 6px;
+  font-size: var(--font-size-xs);
+  color: var(--color-urgent);
+  font-weight: var(--font-weight-medium);
+}
+
+.form-field.is-invalid .form-error-msg {
+  display: block;
+}
+
+.form-field.is-invalid input,
+.form-field.is-invalid textarea,
+.form-field.is-invalid select {
+  border-color: var(--color-urgent);
+  box-shadow: 0 0 0 3px rgba(var(--color-urgent-rgb), 0.12);
+}
+
+.form-field.is-valid input,
+.form-field.is-valid textarea,
+.form-field.is-valid select {
+  border-color: var(--color-success);
+}
+
+.form-field.is-valid::after {
+  content: '';
+  position: absolute;
+  top: 38px;
+  right: 14px;
+  width: 18px;
+  height: 18px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310B981' stroke-width='3'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/contain no-repeat;
+  pointer-events: none;
+}
+
+.form-success {
+  padding: var(--space-lg);
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: var(--radius-lg);
+  color: #065F46;
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+}
+
+.form-success__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+  margin-bottom: var(--space-sm);
+  color: #047857;
+}
+
+/* ── 11. Logo wrapper header ────────────────── */
+.header__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.header__logo-img {
+  width: 44px;
+  height: 44px;
+  transition: transform var(--transition-base);
+}
+
+.header__logo:hover .header__logo-img {
+  transform: rotate(-8deg) scale(1.06);
+}
+
+.header__logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.header__logo-brand {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-extrabold);
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.header__logo-slogan {
+  font-size: 0.68rem;
+  color: var(--color-text-light);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.02em;
+  margin-top: 2px;
+}
+
+/* ── 12. Accessibilite : focus ring accent ──── */
+.btn--accent:focus-visible,
+.btn--urgent:focus-visible {
+  box-shadow: 0 0 0 4px rgba(var(--color-accent-rgb), 0.3),
+              0 0 0 7px rgba(var(--color-primary-rgb), 0.2);
+  outline: none;
+}
+
+/* ── 13. Typo polish — hierarchie renforcee ── */
+h3 {
+  font-size: clamp(1.375rem, 1.2vw + 1rem, 1.75rem);
+  letter-spacing: -0.015em;
+}
+
+h4 {
+  font-size: 1.125rem;
+  letter-spacing: -0.005em;
+  text-transform: none;
+}
+
+/* ── 14. Btn urgence (variante) ─────────────── */
+.btn--urgent {
+  background: var(--gradient-urgent);
+  color: #FFFFFF !important;
+  border: none;
+  font-weight: var(--font-weight-bold);
+  box-shadow: 0 8px 20px -6px rgba(var(--color-urgent-rgb), 0.5);
+}
+
+.btn--urgent:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -6px rgba(var(--color-urgent-rgb), 0.65);
+  color: #FFFFFF !important;
+}
+
+/* ── 15. Zone couverture — section locale ───── */
+.coverage-zone {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: var(--space-lg);
+}
+
+.coverage-zone__city {
+  padding: 6px 14px;
+  background: var(--color-primary-50);
+  color: var(--color-primary-dark);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  border: 1px solid var(--color-primary-100);
+  transition: all var(--transition-base);
+}
+
+.coverage-zone__city:hover {
+  background: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+/* ── 16. Reduced motion respect ─────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .emergency-sticky::before,
+  .emergency-sticky__icon,
+  .availability-badge__dot,
+  .hero__image::before,
+  .header__phone svg,
+  a[href^="tel:"] svg {
+    animation: none !important;
+  }
+}

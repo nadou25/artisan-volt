@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" role="img" aria-label="Artisan Volt — Electricien a Versailles">
+  <defs>
+    <linearGradient id="av-bolt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0066FF"/>
+      <stop offset="1" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="av-ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0066FF"/>
+      <stop offset="1" stop-color="#3385FF"/>
+    </linearGradient>
+    <filter id="av-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="0.8"/>
+    </filter>
+  </defs>
+  <g>
+    <circle cx="24" cy="24" r="21" fill="none" stroke="url(#av-ring)" stroke-width="2.2"/>
+    <circle cx="24" cy="24" r="21" fill="none" stroke="#0066FF" stroke-width="0.5" opacity="0.4" filter="url(#av-glow)"/>
+    <path d="M27 10 L14 26 h7 l-2 12 L33 22 h-7 l1-12z" fill="url(#av-bolt)"/>
+    <circle cx="24" cy="24" r="1.6" fill="#FFFFFF"/>
+  </g>
+  <g font-family="Montserrat, system-ui, sans-serif" font-weight="800" letter-spacing="0.02em">
+    <text x="54" y="22" font-size="15" fill="#0F172A">ARTISAN</text>
+    <text x="54" y="40" font-size="15" fill="url(#av-bolt)">VOLT</text>
+  </g>
+  <circle cx="130" cy="17" r="1.6" fill="#D97706"/>
+</svg>

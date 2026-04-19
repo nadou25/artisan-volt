@@ -1,0 +1,188 @@
+/* ============================================
+   ARTISAN VOLT — Design Tokens
+   Palette: "Versailles Voltage" — Premium Artisan
+   Style: Moderne/Tech + Premium Heritage
+   ============================================ */
+
+:root {
+  /* ── Couleurs Principales ─────────────────────
+     Bleu Nuit Royal : confiance, heritage premium
+     (remplace #0066FF trop satur\u00e9, plus memorable) */
+  --color-primary: #0B1E3F;          /* Bleu Nuit Royal — signature brand */
+  --color-primary-dark: #051735;     /* Bleu profond — ombres */
+  --color-primary-light: #1E4175;    /* Bleu navy — hover */
+  --color-primary-rgb: 11, 30, 63;
+
+  /* Tints Primary (ajust\u00e9es sur la nouvelle base) */
+  --color-primary-50: #EEF2F9;
+  --color-primary-100: #D6DEED;
+  --color-primary-200: #AEBDDC;
+  --color-primary-600: #0B1E3F;
+  --color-primary-900: #020816;
+
+  /* Bleu Electrique Voltage — couleur d'action (CTA bleu, liens) */
+  --color-electric: #2563EB;         /* Voltage accent — CTA primaires */
+  --color-electric-dark: #1D4ED8;    /* Hover */
+  --color-electric-light: #3B82F6;
+  --color-electric-rgb: 37, 99, 235;
+
+  /* Or Signaletique — \u00e9nergie, tension \u00e9lectrique, accent premium */
+  --color-secondary: #F59E0B;        /* Or Amber — accent signal */
+  --color-secondary-dark: #B45309;   /* AA sur blanc 4.52:1 */
+  --color-secondary-light: #FBBF24;
+  --color-secondary-rgb: 245, 158, 11;
+
+  /* Cuivre Artisan — reference aux fils \u00e9lectriques, chaleur metier */
+  --color-accent: #C2410C;           /* Cuivre — CTA accent, AA 4.64:1 */
+  --color-accent-dark: #9A3412;
+  --color-accent-light: #EA580C;
+  --color-accent-rgb: 194, 65, 12;
+
+  /* Urgence (electricien = metier d'urgence) */
+  --color-urgent: #DC2626;
+  --color-urgent-dark: #B91C1C;
+  --color-urgent-light: #EF4444;
+  --color-urgent-rgb: 220, 38, 38;
+
+  /* ── Neutres CHAUDS (Stone) — remplace Slate froid ─── */
+  --color-neutral-50: #FAFAF9;
+  --color-neutral-100: #F5F5F4;
+  --color-neutral-200: #E7E5E4;
+  --color-neutral-300: #D6D3D1;
+  --color-neutral-400: #A8A29E;
+  --color-neutral-500: #78716C;
+  --color-neutral-600: #57534E;
+  --color-neutral-700: #44403C;
+  --color-neutral-800: #292524;
+  --color-neutral-900: #1C1917;
+
+  /* ── Fond & Texte ─────────────────────────── */
+  --color-bg: #FFFFFF;
+  --color-bg-alt: #FAFAF9;          /* Ivoire tr\u00e8s doux */
+  --color-bg-dark: #0B1E3F;         /* Bleu nuit royal */
+  --color-bg-dark-alt: #1C1917;     /* Stone 900 — noir chaud */
+
+  --color-text: #1C1917;            /* Noir chaud — WCAG AAA */
+  --color-text-light: #44403C;      /* Stone-700 — 9.8:1 sur blanc */
+  --color-text-muted: #78716C;      /* Stone-500 — usage accessoire */
+  --color-text-on-dark: #FAFAF9;
+  --color-text-on-primary: #FFFFFF;
+
+  /* ── Feedback ─────────────────────────────── */
+  --color-success: #059669;         /* Emerald — conformit\u00e9 NF C 15-100 */
+  --color-success-dark: #047857;
+  --color-error: #DC2626;
+  --color-warning: #F59E0B;
+  --color-info: #2563EB;
+
+  /* ── Typographies (ancienne — Montserrat + Inter) ────────
+     Montserrat : classique, pro, reconnaissable
+     Inter : lisibilit\u00e9 optimale corpus */
+  --font-heading: 'Montserrat', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Montserrat', system-ui, sans-serif;
+
+  /* ── Echelle Typographique ────────────────── */
+  --font-size-xs: 0.75rem;       /* 12px */
+  --font-size-sm: 0.875rem;      /* 14px */
+  --font-size-base: 1rem;        /* 16px */
+  --font-size-lg: 1.125rem;      /* 18px */
+  --font-size-xl: 1.25rem;       /* 20px */
+  --font-size-2xl: 1.5rem;       /* 24px */
+  --font-size-3xl: 1.875rem;     /* 30px */
+  --font-size-4xl: 2.25rem;      /* 36px */
+  --font-size-5xl: 3rem;         /* 48px */
+  --font-size-hero: 3.5rem;      /* 56px */
+
+  /* ── Font Weights ─────────────────────────── */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* ── Line Heights ─────────────────────────── */
+  --line-height-tight: 1.15;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.8;
+
+  /* ── Letter Spacing (Montserrat) ─── */
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.02em;
+
+  /* ── Espacements ──────────────────────────── */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  --space-section: 5rem;
+
+  /* ── Bordures ─────────────────────────────── */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  --border-width: 1px;
+  --border-color: var(--color-neutral-200);
+
+  /* ── Ombres (rehauss\u00e9es pour palette sombre) ─── */
+  --shadow-sm: 0 1px 2px rgba(28, 25, 23, 0.05), 0 1px 1px rgba(28, 25, 23, 0.03);
+  --shadow-md: 0 4px 8px -2px rgba(28, 25, 23, 0.08), 0 2px 4px -2px rgba(28, 25, 23, 0.05);
+  --shadow-lg: 0 12px 24px -6px rgba(11, 30, 63, 0.14), 0 4px 8px -4px rgba(28, 25, 23, 0.08);
+  --shadow-xl: 0 24px 48px -12px rgba(11, 30, 63, 0.2), 0 8px 16px -8px rgba(28, 25, 23, 0.1);
+  --shadow-2xl: 0 40px 80px -20px rgba(11, 30, 63, 0.28), 0 12px 24px -12px rgba(28, 25, 23, 0.14);
+  --shadow-glow: 0 0 32px rgba(37, 99, 235, 0.35), 0 8px 24px rgba(37, 99, 235, 0.2);
+  --shadow-glow-accent: 0 0 32px rgba(245, 158, 11, 0.35), 0 8px 24px rgba(245, 158, 11, 0.2);
+  --shadow-glow-copper: 0 0 32px rgba(194, 65, 12, 0.32), 0 8px 24px rgba(194, 65, 12, 0.2);
+  --shadow-inner-light: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  /* ── Gradients Premium ────────────────────── */
+  --gradient-primary: linear-gradient(135deg, #0B1E3F 0%, #1E4175 100%);
+  --gradient-electric: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  --gradient-accent: linear-gradient(135deg, #F59E0B 0%, #C2410C 100%);
+  --gradient-copper: linear-gradient(135deg, #EA580C 0%, #9A3412 100%);
+  --gradient-urgent: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+  --gradient-hero: linear-gradient(135deg, #0B1E3F 0%, #1C1917 50%, #051735 100%);
+  --gradient-mesh: radial-gradient(at 20% 20%, rgba(37, 99, 235, 0.18) 0px, transparent 50%),
+                   radial-gradient(at 80% 80%, rgba(245, 158, 11, 0.14) 0px, transparent 50%),
+                   radial-gradient(at 50% 50%, rgba(194, 65, 12, 0.08) 0px, transparent 50%);
+  --gradient-brand: linear-gradient(135deg, #0B1E3F 0%, #F59E0B 100%);
+  --gradient-shimmer: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
+
+  /* ── Transitions ──────────────────────────── */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease-out;
+  --transition-slow: 300ms ease-in-out;
+  --transition-menu: 300ms ease-in-out;
+
+  /* ── Layout ───────────────────────────────── */
+  --container-max: 1200px;
+  --container-padding: 1.5rem;
+
+  /* ── Z-Index ──────────────────────────────── */
+  --z-header: 1000;
+  --z-menu-mobile: 1100;
+  --z-overlay: 1200;
+  --z-modal: 1300;
+  --z-whatsapp: 900;
+}
+
+/* ── R\u00e9glages typographiques ────────── */
+h1, h2, h3, h4, h5, h6,
+.hero__title,
+.section__title {
+  font-family: var(--font-heading);
+  letter-spacing: var(--tracking-tight);
+}
+
+body {
+  font-family: var(--font-body);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
