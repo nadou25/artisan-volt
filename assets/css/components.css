@@ -9,6 +9,7 @@
   justify-content: center;
   gap: var(--space-sm);
   padding: 0.75rem 1.75rem;
+  min-height: 44px;
   font-family: var(--font-heading);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
